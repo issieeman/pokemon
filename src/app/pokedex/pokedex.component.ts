@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-import {RootObject, IRootObject, Result, PokemonService, Form} from '../services/pokemon.service';
+import { RootObject, Pokemon, Result, PokemonService, Form } from '../services/pokemon.service';
 
 @Component({
   selector: 'app-pokedex',
@@ -11,44 +10,45 @@ export class PokedexComponent implements OnInit {
 
   pokemon: RootObject;
   next: RootObject;
-  detailPokemon : IRootObject;
-  detailPokemons:IRootObject[];
-  
-  constructor( private _svc: PokemonService) { }
+  detailPokemon: Pokemon;
+  detailPokemons: Pokemon[];
+
+  constructor(private _svc: PokemonService) { }
 
   ngOnInit() {
-   this.GetAllPokemon()
-    
-  
-    
+    this.GetAllPokemon();
+    this.detailPokemons = new Array<Pokemon>();
   }
 
-  GetAllPokemon(){
-    this._svc.GetPokemon().subscribe(res =>{
+  GetAllPokemon() {
+    this._svc.GetPokemon().subscribe((res: RootObject) => {
       this.pokemon = res;
-      for (let index = 0; index < this.pokemon.results.length; index++) {
-       this.GetDetailed(this.pokemon[index].results.url)
-        
-      }
-    
-    })
+    });
   }
 
-  GetNext(next: string){
-    this._svc.GetNext(next).subscribe(result => this.pokemon = result)
-   // this._svc.logger(next);
+  GetAllDetails() {
+    for (let index = 0; index < this.pokemon.results.length; index++) {
+      this.GetDetailed(this.pokemon.results[index].url);
+    }
   }
 
- GetDetailed(forms:string){
-   //console.log(forms);
-   this._svc.GetDetailed(forms).subscribe(result =>
-    { 
+  GetNext(next: string) {
+    this._svc.GetNext(next).subscribe(result => this.pokemon = result);
+  }
+
+  GetDetailed(forms: string) {
+    this._svc.GetDetailed(forms).subscribe((result: Pokemon) => {
       this.detailPokemons.push(result);
       console.log(result);
-      
-    })
-   
-   
- }
+    },
+      err => console.log(err)
+    );
+  }
+
+  SetPokemon(url: string) {
+    this._svc.GetDetailed(url).subscribe((res: Pokemon) => {
+      this.detailPokemon = res;
+    });
+  }
 
 }

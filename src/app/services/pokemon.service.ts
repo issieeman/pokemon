@@ -1,49 +1,35 @@
 import { Injectable } from '@angular/core';
-
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-//import {BehaviourSubject} from 'rxjs/BehaviorSubject';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class PokemonService {
 
-  private _url = 'https://pokeapi.co/api/v2/pokemon/'
-  result : Result[];
-  Detail:IRootObject;
+  private _url = 'https://pokeapi.co/api/v2/pokemon/';
+  //result: Result[];
+  Detail: Pokemon;
   constructor(private _http: HttpClient) { }
 
-  GetPokemon(): Observable<RootObject>{
-    return this._http.get<RootObject>(this._url).map(
-      root=>{
-        root.results.forEach((pokemon:Result)=>{
-          for (let index = 0; index < this.result.length; index++) {
-            pokemon[index] = this.Detail;
-            
-          }
-        });
-      }
-    );
+  GetPokemon(): Observable<RootObject> {
+    return this._http.get<RootObject>(this._url);
   }
 
-GetNext(url: string):Observable<RootObject>{
-  return this._http.get<RootObject>(url);
+  GetNext(url: string): Observable<RootObject> {
+    return this._http.get<RootObject>(url);
 
-}
+  }
 
-GetDetailed(url:string):Observable<IRootObject>{
-  return this._http.get<IRootObject>(url);
-}
-
-logger(id: number){
-  console.log(id);
-}
+  GetDetailed(url: string): Observable<Pokemon> {
+    return this._http.get<Pokemon>(url);
+  }
 
 }
 
 export interface Result {
   url: string;
   name: string;
-  detail:IRootObject;
+  detail: Pokemon;
 }
 
 export interface RootObject {
@@ -51,7 +37,7 @@ export interface RootObject {
   previous?: any;
   results: Result[];
   next: string;
-  
+
 }
 
 export interface Form {
@@ -143,7 +129,7 @@ export interface Type {
   type: Type2;
 }
 
-export interface IRootObject {
+export interface Pokemon {
   forms: Form[];
   abilities: Ability[];
   stats: Stat[];
