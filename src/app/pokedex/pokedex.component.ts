@@ -26,11 +26,11 @@ export class PokedexComponent implements OnInit {
     });
   }
 
-  GetAllDetails() {
+ /* GetAllDetails() {
     for (let index = 0; index < this.pokemon.results.length; index++) {
       this.GetDetailed(this.pokemon.results[index].url);
     }
-  }
+  }*/
 
   GetNext(next: string) {
     this._svc.GetNext(next).subscribe(result => this.pokemon = result);

@@ -1,5 +1,16 @@
 <div class="container" *ngIf="pokemon">
-    <p>{{pokemon.name}}</p>
+    
+
     <img  class="pokedex" src="assets/img/pokedex.png">
-    <img class="pokemon" [src]="pokemon.sprites.front_default" >
+
+    <div class="imagewrap">
+        <img class="pokemon" [src]="pokemon.sprites.front_default" >
+    </div>
+    <div class="detailwrap">
+            <p> name: {{pokemon.name}}</p>
+            <p> weight: {{pokemon.weight}}</p>
+            <p> base xp: {{pokemon.base_experience}}</p>
+    </div>
+    
+   
 </div>

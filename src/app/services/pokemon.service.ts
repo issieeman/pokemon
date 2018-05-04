@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class PokemonService {
 
-  private _url = 'https://pokeapi.co/api/v2/pokemon/';
+  private _url = 'https://pokeapi.co/api/v2/pokemon/?limit=10&offset=0';
   //result: Result[];
   Detail: Pokemon;
   constructor(private _http: HttpClient) { }
