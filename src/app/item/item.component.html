@@ -1,0 +1,24 @@
+   <div class="row">
+   <div class="col-4">
+        <app-itemdetailview *ngIf="detailItem" [item]="detailItem"></app-itemdetailview>
+    </div>
+<div class="col-8" *ngIf="item">
+  <div class="card-block">
+      <table class="table table-hover primary-color-dark-text " *ngIf="item">
+          <thead>
+              <tr>
+                  <th> <strong>naam</strong> </th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let item of item.results" (click)="SetItem(item.url)">
+                  <td> <strong>{{item.name}}</strong> </td>
+                  
+              </tr>
+              <button type="button" class="btn btn-danger waves-light" (click)="GetNext(item.next)" mdbRippleRadius>next</button>
+          </tbody>
+      </table>
+      
+  </div>
+</div>
+</div>

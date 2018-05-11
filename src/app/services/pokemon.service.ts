@@ -2,16 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import { HttpHeaders } from '@angular/common/http/src/headers';
 
 @Injectable()
 export class PokemonService {
 
   private _url = 'https://pokeapi.co/api/v2/';
-  pokemonString = 'pokemon/?limit=10&offset=0';
-  berriesString = 'berry'
-  //result: Result[];
+  pokemonString = 'pokemon/?limit=10&offset=0'; //resource 1
+  itemString = 'item/?limit=10&offset=0' //resource 2
   Detail: Pokemon;
+
+  DetailItem : Item;
   constructor(private _http: HttpClient) { }
+
+
 
   GetPokemon(): Observable<RootObject> {
     return this._http.get<RootObject>(this._url+this.pokemonString);
@@ -22,22 +26,26 @@ export class PokemonService {
 
   }
 
-  GetDetailed(url: string): Observable<Pokemon> {
+  GetDetailedPokemon(url: string): Observable<Pokemon> {
     return this._http.get<Pokemon>(url);
   }
 
-  GetBerries(): Observable<RootObject>{
-    return this._http.get<RootObject>(this._url+this.berriesString);
+  GetItem(): Observable<RootObject>{
+    return this._http.get<RootObject>(this._url+this.itemString);
+  }
+
+  GetDetailedItem(url:string): Observable<Item>{
+    return this._http.get<Item>(url);
   }
 }
 
 
 
-/////pokemon////
+/////begin pokemon resource ////
 export interface Result {
   url: string;
   name: string;
-  detail: Pokemon;
+ // detail: Pokemon;
 }
 
 export interface RootObject {
@@ -156,6 +164,85 @@ export interface Pokemon {
   base_experience: number;
   types: Type[];
 }
-///einde pokemon/////
+///einde pokemon resource /////
 
+/// begin items resource ////
+export interface Category {
+  url: string;
+  name: string;
+}
 
+export interface Language {
+  url: string;
+  name: string;
+}
+
+export interface EffectEntry {
+  short_effect: string;
+  effect: string;
+  language: Language;
+}
+
+export interface Sprites {
+  default: string;
+}
+
+export interface Generation {
+  url: string;
+  name: string;
+}
+
+export interface GameIndice {
+  generation: Generation;
+  game_index: number;
+}
+
+export interface Language2 {
+  url: string;
+  name: string;
+}
+
+export interface Name {
+  name: string;
+  language: Language2;
+}
+
+export interface Attribute {
+  url: string;
+  name: string;
+}
+
+export interface VersionGroup {
+  url: string;
+  name: string;
+}
+
+export interface Language3 {
+  url: string;
+  name: string;
+}
+
+export interface FlavorTextEntry {
+  text: string;
+  version_group: VersionGroup;
+  language: Language3;
+}
+
+export interface Item {
+  category: Category;
+  name: string;
+  fling_effect?: any;
+  effect_entries: EffectEntry[];
+  held_by_pokemon: any[];
+  sprites: Sprites;
+  game_indices: GameIndice[];
+  baby_trigger_for?: any;
+  cost: number;
+  names: Name[];
+  attributes: Attribute[];
+  flavor_text_entries: FlavorTextEntry[];
+  id: number;
+  machines: any[];
+  fling_power?: any;
+}
+//// einde items resource ////

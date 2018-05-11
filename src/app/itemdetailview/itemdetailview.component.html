@@ -1,0 +1,28 @@
+
+<!--Card Dark-->
+<div class="card" *ngIf="item">
+  <!--Card image-->
+  <div class="view overlay waves-light" mdbWavesEffect>
+      <img [src]= "item.sprites.default" class="mx-auto d-block" alt="work desk">
+      <a>
+          <div class="mask rgba-white-slight"></div>
+      </a>
+  </div>
+  <!--/.Card image-->
+  <!--Card content-->
+  <div class="card-body elegant-color white-text">
+      
+      <!--Title-->
+      <h4 class="card-title">{{item.name}}</h4>
+      <hr class="hr-light">
+      <!--Text-->
+      <p class="font-small mb-4">{{item.effect_entries[0].effect}}</p>
+
+  </div>
+  <!--/.Card content-->
+</div>
+<!--/.Card Dark-->
+
+
+
+

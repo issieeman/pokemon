@@ -17,7 +17,8 @@ export class PokedexComponent implements OnInit {
 
   ngOnInit() {
     this.GetAllPokemon();
-    this.detailPokemons = new Array<Pokemon>();
+   // this.detailPokemons = new Array<Pokemon>();
+   
     
 
   }
@@ -38,17 +39,17 @@ export class PokedexComponent implements OnInit {
     this._svc.GetNext(next).subscribe(result => this.pokemon = result);
   }
 
-  GetDetailed(forms: string) {
-    this._svc.GetDetailed(forms).subscribe((result: Pokemon) => {
+  /*GetDetailed(forms: string) {
+    this._svc.GetDetailedPokemon(forms).subscribe((result: Pokemon) => {
       this.detailPokemons.push(result);
       console.log(result);
     },
       err => console.log(err)
     );
-  }
+  }*/
 
   SetPokemon(url: string) {
-    this._svc.GetDetailed(url).subscribe((res: Pokemon) => {
+    this._svc.GetDetailedPokemon(url).subscribe((res: Pokemon) => {
       this.detailPokemon = res;
     });
   }

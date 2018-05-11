@@ -11,7 +11,9 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PokemonService } from './services/pokemon.service';
 import { DetailviewComponent } from './detailview/detailview.component';
-import { BerriesComponent } from './berries/berries.component'
+import { BerriesComponent } from './berries/berries.component';
+import { ItemComponent } from './item/item.component';
+import { ItemdetailviewComponent } from './itemdetailview/itemdetailview.component'
 
 @NgModule({
   declarations: [
@@ -19,14 +21,18 @@ import { BerriesComponent } from './berries/berries.component'
     PokedexComponent,
     NavBarComponent,
     DetailviewComponent,
-    BerriesComponent
+    BerriesComponent,
+    ItemComponent,
+    ItemdetailviewComponent
   ],
   imports: [
     BrowserModule,
     MDBBootstrapModule.forRoot(),
     RouterModule.forRoot([
       { path: 'pokedex', component: PokedexComponent },
-      {path:'berries', component:BerriesComponent }
+      {path:'berries', component:BerriesComponent },
+      {path: 'item', component: ItemComponent},
+      {path:'', redirectTo: 'pokedex', pathMatch: 'full'}
     ], { useHash: true }),
     HttpClientModule
   ],
