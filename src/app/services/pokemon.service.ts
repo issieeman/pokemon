@@ -6,13 +6,15 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class PokemonService {
 
-  private _url = 'https://pokeapi.co/api/v2/pokemon/?limit=10&offset=0';
+  private _url = 'https://pokeapi.co/api/v2/';
+  pokemonString = 'pokemon/?limit=10&offset=0';
+  berriesString = 'berry'
   //result: Result[];
   Detail: Pokemon;
   constructor(private _http: HttpClient) { }
 
   GetPokemon(): Observable<RootObject> {
-    return this._http.get<RootObject>(this._url);
+    return this._http.get<RootObject>(this._url+this.pokemonString);
   }
 
   GetNext(url: string): Observable<RootObject> {
@@ -24,8 +26,14 @@ export class PokemonService {
     return this._http.get<Pokemon>(url);
   }
 
+  GetBerries(): Observable<RootObject>{
+    return this._http.get<RootObject>(this._url+this.berriesString);
+  }
 }
 
+
+
+/////pokemon////
 export interface Result {
   url: string;
   name: string;
@@ -148,3 +156,6 @@ export interface Pokemon {
   base_experience: number;
   types: Type[];
 }
+///einde pokemon/////
+
+

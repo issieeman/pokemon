@@ -8,9 +8,15 @@ import { Pokemon } from '../services/pokemon.service';
 })
 export class DetailviewComponent implements OnInit {
   @Input() pokemon: Pokemon;
-
+  front?: boolean;
   constructor() { }
 
   ngOnInit() {
+    this.front = true;
+  }
+
+  turn() {
+    this.front = !this.front ;
+    console.log(this.front);
   }
 }

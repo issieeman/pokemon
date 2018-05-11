@@ -18,6 +18,8 @@ export class PokedexComponent implements OnInit {
   ngOnInit() {
     this.GetAllPokemon();
     this.detailPokemons = new Array<Pokemon>();
+    
+
   }
 
   GetAllPokemon() {
