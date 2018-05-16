@@ -11,9 +11,11 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PokemonService } from './services/pokemon.service';
 import { DetailviewComponent } from './detailview/detailview.component';
-import { BerriesComponent } from './berries/berries.component';
 import { ItemComponent } from './item/item.component';
-import { ItemdetailviewComponent } from './itemdetailview/itemdetailview.component'
+import { ItemdetailviewComponent } from './itemdetailview/itemdetailview.component';
+import { TypeComponent } from './type/type.component';
+import { TypedetailviewComponent } from './typedetailview/typedetailview.component'
+
 
 @NgModule({
   declarations: [
@@ -21,16 +23,17 @@ import { ItemdetailviewComponent } from './itemdetailview/itemdetailview.compone
     PokedexComponent,
     NavBarComponent,
     DetailviewComponent,
-    BerriesComponent,
     ItemComponent,
-    ItemdetailviewComponent
+    ItemdetailviewComponent,
+    TypeComponent,
+    TypedetailviewComponent
   ],
   imports: [
     BrowserModule,
     MDBBootstrapModule.forRoot(),
     RouterModule.forRoot([
       { path: 'pokedex', component: PokedexComponent },
-      {path:'berries', component:BerriesComponent },
+      { path: 'type', component: TypeComponent },
       {path: 'item', component: ItemComponent},
       {path:'', redirectTo: 'pokedex', pathMatch: 'full'}
     ], { useHash: true }),

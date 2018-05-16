@@ -13,6 +13,9 @@ export class PokedexComponent implements OnInit {
   detailPokemon: Pokemon;
   detailPokemons: Pokemon[];
 
+  //zoekbalk
+  searchString:string;
+
   constructor(private _svc: PokemonService) { }
 
   ngOnInit() {
@@ -23,35 +26,39 @@ export class PokedexComponent implements OnInit {
 
   }
 
+  onNameKeyUp(event:any){
+    //console.log(event.target.value);
+    this.searchString = event.target.value;
+  }
+
   GetAllPokemon() {
     this._svc.GetPokemon().subscribe((res: RootObject) => {
       this.pokemon = res;
+      
     });
   }
 
- /* GetAllDetails() {
-    for (let index = 0; index < this.pokemon.results.length; index++) {
-      this.GetDetailed(this.pokemon.results[index].url);
-    }
-  }*/
 
   GetNext(next: string) {
     this._svc.GetNext(next).subscribe(result => this.pokemon = result);
   }
 
-  /*GetDetailed(forms: string) {
-    this._svc.GetDetailedPokemon(forms).subscribe((result: Pokemon) => {
-      this.detailPokemons.push(result);
-      console.log(result);
-    },
-      err => console.log(err)
-    );
-  }*/
 
   SetPokemon(url: string) {
     this._svc.GetDetailedPokemon(url).subscribe((res: Pokemon) => {
       this.detailPokemon = res;
     });
   }
+
+  SearchPokemon(){
+    this._svc.getPokemonBySearch(this.searchString).subscribe((result:Pokemon)=> {
+      this.detailPokemon = result;
+      console.log(result);
+    });
+  }
+
+
+
+
 
 }

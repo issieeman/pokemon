@@ -1,0 +1,42 @@
+
+<!--Card Dark-->
+<div class="card" *ngIf="type">
+  <!--Card image-->
+  <div class="view overlay waves-light" mdbWavesEffect>
+     
+      <a>
+          <div class="mask rgba-white-slight"></div>
+      </a>
+  </div>
+  <!--/.Card image-->
+  <!--Card content-->
+  <div class="card-body deep-orange darken-2 white-text">
+      
+      <!--Title-->
+      <h4 class="card-title">{{type.name}}</h4>
+      <hr class="hr-light">
+      <!--Text-->
+     
+      <table class="table table-hover primary-color-dark-text " *ngIf="type">
+        <thead>
+            <tr>
+                <th> <strong>NAME</strong> </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let type of type.pokemon">
+                <td> <strong>{{type.pokemon.name}}</strong> </td>
+                
+            </tr>
+          
+        </tbody>
+    </table>
+
+  </div>
+  <!--/.Card content-->
+</div>
+<!--/.Card Dark-->
+
+
+
+

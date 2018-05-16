@@ -1,12 +1,27 @@
+<div class="title"><h1><strong>choose a pokemon </strong></h1></div>
+
 <div class="row">
-    <div class="col-9">
+
+    <div class="col-8">
         <app-detailview *ngIf="detailPokemon" [pokemon]="detailPokemon"></app-detailview>
           <img  class="pokedex" src="assets/img/pokedex.png">
     </div>
 
-
-    <div class="col-3">
+    
+    <div class="col-4">
+            <div class="card">
         <div class="card-block">
+                <div class="md-form">
+                        <span class="float-right"><i class="fa fa-close"></i></span>
+                
+                        <input mdbActive type="text" id="form1" class="form-control" (keyup)="onNameKeyUp($event)">
+                        <label for="form1" class="">Enter Search:</label>
+                        <button type="button" class="btn btn-primary waves-light" (click)="SearchPokemon()" mdbRippleRadius>
+                            <i class="fa fa-search" aria-hidden="true"></i> search pokemon</button>
+                
+                        <br>
+                
+                    </div>
             <table class="table table-hover primary-color-dark-text " *ngIf="pokemon">
                 <thead>
                     <tr>
@@ -22,6 +37,8 @@
             </table>
         </div>
     </div>
+    </div>
+
 </div>
 
 

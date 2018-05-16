@@ -1,1 +1,4 @@
-verder werken aan berries.
+#verder werken aan berries.
+
+item resource stylen
+beginnen aan berries? resource

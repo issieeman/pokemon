@@ -8,35 +8,56 @@ import { HttpHeaders } from '@angular/common/http/src/headers';
 export class PokemonService {
 
   private _url = 'https://pokeapi.co/api/v2/';
-  pokemonString = 'pokemon/?limit=10&offset=0'; //resource 1
+  pokemonStringLimit = 'pokemon/?limit=10&offset=0'; //resource 1
+  pokemonString = 'pokemon/'; //resource 1
   itemString = 'item/?limit=10&offset=0' //resource 2
-  Detail: Pokemon;
+  typeString = 'type'                    //resource3
 
-  DetailItem : Item;
+  
+
+ // Detail: Pokemon;
+
+ // DetailItem : Item;
   constructor(private _http: HttpClient) { }
 
-
-
-  GetPokemon(): Observable<RootObject> {
-    return this._http.get<RootObject>(this._url+this.pokemonString);
-  }
-
+  /// volgende lijst
   GetNext(url: string): Observable<RootObject> {
     return this._http.get<RootObject>(url);
 
   }
 
-  GetDetailedPokemon(url: string): Observable<Pokemon> {
-    return this._http.get<Pokemon>(url);
+  ///pokedexcomponent
+  GetPokemon(): Observable<RootObject> {
+    return this._http.get<RootObject>(this._url+this.pokemonStringLimit);
   }
 
+
+  GetDetailedPokemon(url: string): Observable<Pokemon> {
+    return this._http.get<Pokemon>(url);
+  }///einde pokedexcomponent
+
+  /// itemcomponent
   GetItem(): Observable<RootObject>{
     return this._http.get<RootObject>(this._url+this.itemString);
   }
 
   GetDetailedItem(url:string): Observable<Item>{
     return this._http.get<Item>(url);
+  } ///einde itemcomponent
+
+  /// typecomponent
+  GetType():Observable<RootObject>{
+    return this._http.get<RootObject>(this._url+this.typeString);
   }
+
+  GetDetailedType(url:string):Observable<Type>{
+    return this._http.get<Type>(url);
+  } ///einde typecomponent
+
+  getPokemonBySearch(name:string):Observable<Pokemon>{
+    return this._http.get<Pokemon>(this._url+this.pokemonString+`${name}`)
+  }
+
 }
 
 
@@ -45,7 +66,6 @@ export class PokemonService {
 export interface Result {
   url: string;
   name: string;
- // detail: Pokemon;
 }
 
 export interface RootObject {
@@ -135,14 +155,14 @@ export interface GameIndice {
   game_index: number;
 }
 
-export interface Type2 {
+export interface Type3 {
   url: string;
   name: string;
 }
 
-export interface Type {
+export interface Type2 {
   slot: number;
-  type: Type2;
+  type: Type3;
 }
 
 export interface Pokemon {
@@ -162,7 +182,7 @@ export interface Pokemon {
   order: number;
   game_indices: GameIndice[];
   base_experience: number;
-  types: Type[];
+  types: Type2[];
 }
 ///einde pokemon resource /////
 
@@ -246,3 +266,92 @@ export interface Item {
   fling_power?: any;
 }
 //// einde items resource ////
+
+//// begin types resource ////
+export interface Generation {
+  url: string;
+  name: string;
+}
+
+export interface NoDamageFrom {
+  url: string;
+  name: string;
+}
+
+export interface HalfDamageTo {
+  url: string;
+  name: string;
+}
+
+export interface DoubleDamageFrom {
+  url: string;
+  name: string;
+}
+
+export interface NoDamageTo {
+  url: string;
+  name: string;
+}
+
+export interface DamageRelations {
+  half_damage_from: any[];
+  no_damage_from: NoDamageFrom[];
+  half_damage_to: HalfDamageTo[];
+  double_damage_from: DoubleDamageFrom[];
+  no_damage_to: NoDamageTo[];
+  double_damage_to: any[];
+}
+
+export interface Generation2 {
+  url: string;
+  name: string;
+}
+
+export interface GameIndice {
+  generation: Generation2;
+  game_index: number;
+}
+
+export interface MoveDamageClass {
+  url: string;
+  name: string;
+}
+
+export interface Move {
+  url: string;
+  name: string;
+}
+
+export interface Pokemon2 {
+  url: string;
+  name: string;
+}
+
+export interface Pokemon {
+  slot: number;
+  pokemon: Pokemon2;
+}
+
+export interface Language {
+  url: string;
+  name: string;
+}
+
+export interface Name {
+  name: string;
+  language: Language;
+}
+
+export interface Type {
+  name: string;
+  generation: Generation;
+  damage_relations: DamageRelations;
+  game_indices: GameIndice[];
+  move_damage_class: MoveDamageClass;
+  moves: Move[];
+  pokemon: Pokemon[];
+  id: number;
+  names: Name[];
+}
+
+///// einde types resource ////
