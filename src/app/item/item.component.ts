@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RootObject, PokemonService, Item } from '../services/pokemon.service';
+import { resource } from 'selenium-webdriver/http';
 
 @Component({
   selector: 'app-item',
@@ -10,7 +11,6 @@ export class ItemComponent implements OnInit {
 
   item: RootObject;
   detailItem: Item;
- // detailItems:Item[];
   constructor(private _svc: PokemonService) { }
 
   ngOnInit() {
@@ -28,12 +28,9 @@ export class ItemComponent implements OnInit {
     this._svc.GetNext(next).subscribe(result => this.item = result);
   }
 
-  /*GetDetailed(category: string){
-    this._svc.GetDetailedItem(category).subscribe((result: Item)=>{
-      this.detailItems.push(result);
-      console.log(result);
-    })
-  }*/
+  GetPrev(previous: string){
+    this._svc.GetPrev(previous).subscribe(result => this.item = result);
+  }
 
   
   SetItem(url: string){

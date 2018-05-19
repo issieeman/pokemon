@@ -17,6 +17,7 @@
                   <td> <strong>{{item.name}}</strong> </td>
                   
               </tr>
+              <button type="button" class="btn btn-danger waves-light" (click)="GetPrev(item.previous)" mdbRippleRadius>previous</button>
               <button type="button" class="btn btn-danger waves-light" (click)="GetNext(item.next)" mdbRippleRadius>next</button>
           </tbody>
       </table>

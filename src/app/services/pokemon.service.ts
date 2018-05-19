@@ -26,6 +26,10 @@ export class PokemonService {
 
   }
 
+  GetPrev(url:string):Observable<RootObject>{
+    return this._http.get<RootObject>(url);
+  }
+
   ///pokedexcomponent
   GetPokemon(): Observable<RootObject> {
     return this._http.get<RootObject>(this._url+this.pokemonStringLimit);

@@ -43,6 +43,10 @@ export class PokedexComponent implements OnInit {
     this._svc.GetNext(next).subscribe(result => this.pokemon = result);
   }
 
+  GetPrev(previous:string){
+    this._svc.GetPrev(previous).subscribe(result => this.pokemon = result);
+  }
+
 
   SetPokemon(url: string) {
     this._svc.GetDetailedPokemon(url).subscribe((res: Pokemon) => {

@@ -32,7 +32,9 @@
                     <tr *ngFor="let poke of pokemon.results" (click)="SetPokemon(poke.url)">
                         <td> <strong>{{poke.name}}</strong> </td>
                     </tr>
+                    <button type="button" class="btn btn-danger waves-light" (click)="GetPrev(pokemon.previous)" mdbRippleRadius>previous</button>
                     <button type="button" class="btn btn-danger waves-light" (click)="GetNext(pokemon.next)" mdbRippleRadius>next</button>
+                    
                 </tbody>
             </table>
         </div>
