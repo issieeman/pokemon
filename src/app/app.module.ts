@@ -10,11 +10,16 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { PokemonService } from './services/pokemon.service';
+import {StoreService} from './services/store.service';
 import { DetailviewComponent } from './detailview/detailview.component';
 import { ItemComponent } from './item/item.component';
 import { ItemdetailviewComponent } from './itemdetailview/itemdetailview.component';
 import { TypeComponent } from './type/type.component';
-import { TypedetailviewComponent } from './typedetailview/typedetailview.component'
+import { TypedetailviewComponent } from './typedetailview/typedetailview.component';
+import { MotorCatalogusComponent } from './motor-catalogus/motor-catalogus.component';
+import { StoreComponent } from './store/store.component';
+import { HelmetCatalogusComponent } from './helmet-catalogus/helmet-catalogus.component';
+
 
 
 @NgModule({
@@ -26,7 +31,10 @@ import { TypedetailviewComponent } from './typedetailview/typedetailview.compone
     ItemComponent,
     ItemdetailviewComponent,
     TypeComponent,
-    TypedetailviewComponent
+    TypedetailviewComponent,
+    MotorCatalogusComponent,
+    StoreComponent,
+    HelmetCatalogusComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,12 +43,13 @@ import { TypedetailviewComponent } from './typedetailview/typedetailview.compone
       { path: 'pokedex', component: PokedexComponent },
       { path: 'type', component: TypeComponent },
       {path: 'item', component: ItemComponent},
+      {path: 'store', component: StoreComponent},
       {path:'', redirectTo: 'pokedex', pathMatch: 'full'}
     ], { useHash: true }),
     HttpClientModule
   ],
   schemas: [NO_ERRORS_SCHEMA],
-  providers: [PokemonService],
+  providers: [PokemonService, StoreService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
