@@ -18,7 +18,8 @@ import { TypeComponent } from './type/type.component';
 import { TypedetailviewComponent } from './typedetailview/typedetailview.component';
 import { MotorCatalogusComponent } from './motor-catalogus/motor-catalogus.component';
 import { StoreComponent } from './store/store.component';
-import { HelmetCatalogusComponent } from './helmet-catalogus/helmet-catalogus.component'
+import { HelmetCatalogusComponent } from './helmet-catalogus/helmet-catalogus.component';
+
 
 
 @NgModule({
@@ -33,7 +34,7 @@ import { HelmetCatalogusComponent } from './helmet-catalogus/helmet-catalogus.co
     TypedetailviewComponent,
     MotorCatalogusComponent,
     StoreComponent,
-    HelmetCatalogusComponent
+    HelmetCatalogusComponent,
   ],
   imports: [
     BrowserModule,
