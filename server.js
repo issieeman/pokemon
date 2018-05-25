@@ -16,6 +16,8 @@ const redirectUrl = 'http%3A%2F%2Flocalhost%3A3000%2Fgoogle-callback'
 
 let apiRouter = ex.Router();
 
+
+
 //profiel pagina. 
 //Er wordt eerst de naam en foto in geplaatst vooraleer deze wordt teruggestuurd naar de browser
 const profile = `<!DOCTYPE html>

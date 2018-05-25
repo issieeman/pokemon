@@ -1,5 +1,6 @@
 
         
+        
             <!--Card content-->
 
                 <!--Title-->
@@ -12,16 +13,74 @@
                               <tr>
                                   <th> <strong>brand</strong> </th>
                                   <th> <strong>name</strong> </th>
+                                  <th> <strong>price</strong> </th>
                               </tr>
                           </thead>
                           <tbody>
+                              
                               <tr *ngFor="let motor of motors">
-                                  <td> <strong>{{motor.brand}}</strong> </td>
+                                  
+                                  <td><i class="fa fa-shopping-basket" aria-hidden="true"></i> <strong>{{motor.brand}}</strong> </td>
                                   <td> <strong>{{motor.name}}</strong> </td>
+                                  <td> <strong>{{motor.price}}€</strong> </td>
+                                  <button type="button" class="close" aria-label="Close"(click)="DeleteMotor(motor.id)" mdbTooltip="delete">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
                               </tr>
                               
                           </tbody>
                         </table>
 
-        
+                    </div>
+
+                    <br>
+                    <br>
+
+                    <div class="wrap">
+                    <div class="card">
+                            <h4 class="card-title red">feel free to make adjustments to the Db by post/put</h4>
+
+                        <div class="md-form-sm">
+                                <i class="fa fa-motorcycle" aria-hidden="true"></i>
+                                <input id="id" class="form-control-sm" mdbActive >
+                                <label for="id">id</label>
+                            </div>
+
+                            <div class="md-form-sm">
+                                    <i class="fa fa-motorcycle" aria-hidden="true"></i>
+                                    <input id="brand" class="form-control-sm" mdbActive >
+                                    <label for="brand">Brand</label>
+                                </div>
+
+                                <div class="md-form-sm">
+                                        <i class="fa fa-motorcycle" aria-hidden="true"></i>
+                                        <input id="name" class="form-control-sm" mdbActive >
+                                        <label for="name">Name</label>
+                                    </div>
+
+                                    <div class="md-form-sm">
+                                            <i class="fa fa-motorcycle" aria-hidden="true"></i>
+                                            <input id="CC" class="form-control-sm" mdbActive >
+                                            <label for="CC">Cylinder Size</label>
+                                        </div>
+
+                                        <div class="md-form-sm">
+                                                <i class="fa fa-motorcycle" aria-hidden="true"></i>
+                                                <input id="HorsePower" class="form-control-sm" mdbActive >
+                                                <label for="HorsePower">Horse Power</label>
+                                            </div>
+
+                                            <div class="md-form-sm">
+                                                    <i class="fa fa-motorcycle" aria-hidden="true"></i>
+                                                    <input id="price" class="form-control-sm" mdbActive >
+                                                    <label for="price">price</label>
+                                                </div>
+
+
+                                                <button type="button" class="btn btn-success waves-light" mdbWavesEffect>Post</button>
+                                                <button type="button" class="btn btn-success waves-light" mdbWavesEffect>Put</button>
+
+                        </div>
+                    </div>
+              
     

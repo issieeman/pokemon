@@ -23,4 +23,12 @@ export class MotorCatalogusComponent implements OnInit {
     } )
   }
 
+
+  DeleteMotor(id){
+    this._svc.DeleteMotors(id).subscribe((res:Motor[]) =>{
+      this.motors = res
+      console.log(res);
+    })
+  }
+
 }

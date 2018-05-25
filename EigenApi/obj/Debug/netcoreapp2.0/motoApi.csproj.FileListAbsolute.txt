@@ -31,3 +31,14 @@ C:\Users\Issam\Documents\school\cloudapi\ProjectCloudApi\pokemon\eigenApi\motoAp
 C:\Users\Issam\Documents\school\cloudapi\ProjectCloudApi\pokemon\eigenApi\motoApi\obj\Debug\netcoreapp2.0\motoApi.AssemblyInfo.cs
 C:\Users\Issam\Documents\school\cloudapi\ProjectCloudApi\pokemon\eigenApi\motoApi\obj\Debug\netcoreapp2.0\motoApi.dll
 C:\Users\Issam\Documents\school\cloudapi\ProjectCloudApi\pokemon\eigenApi\motoApi\obj\Debug\netcoreapp2.0\motoApi.pdb
+C:\Users\Issam\Documents\school\cloudapi\project\pokemon\EigenApi\bin\Debug\netcoreapp2.0\motoApi.deps.json
+C:\Users\Issam\Documents\school\cloudapi\project\pokemon\EigenApi\bin\Debug\netcoreapp2.0\motoApi.runtimeconfig.json
+C:\Users\Issam\Documents\school\cloudapi\project\pokemon\EigenApi\bin\Debug\netcoreapp2.0\motoApi.runtimeconfig.dev.json
+C:\Users\Issam\Documents\school\cloudapi\project\pokemon\EigenApi\bin\Debug\netcoreapp2.0\motoApi.dll
+C:\Users\Issam\Documents\school\cloudapi\project\pokemon\EigenApi\bin\Debug\netcoreapp2.0\motoApi.pdb
+C:\Users\Issam\Documents\school\cloudapi\project\pokemon\EigenApi\obj\Debug\netcoreapp2.0\motoApi.csprojResolveAssemblyReference.cache
+C:\Users\Issam\Documents\school\cloudapi\project\pokemon\EigenApi\obj\Debug\netcoreapp2.0\motoApi.csproj.CoreCompileInputs.cache
+C:\Users\Issam\Documents\school\cloudapi\project\pokemon\EigenApi\obj\Debug\netcoreapp2.0\motoApi.AssemblyInfoInputs.cache
+C:\Users\Issam\Documents\school\cloudapi\project\pokemon\EigenApi\obj\Debug\netcoreapp2.0\motoApi.AssemblyInfo.cs
+C:\Users\Issam\Documents\school\cloudapi\project\pokemon\EigenApi\obj\Debug\netcoreapp2.0\motoApi.dll
+C:\Users\Issam\Documents\school\cloudapi\project\pokemon\EigenApi\obj\Debug\netcoreapp2.0\motoApi.pdb

@@ -12668,11 +12668,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Issam\\Documents\\school\\cloudapi\\ProjectCloudApi\\pokemon\\eigenApi\\motoApi\\motoApi.csproj",
+      "projectUniqueName": "C:\\Users\\Issam\\Documents\\school\\cloudapi\\project\\pokemon\\EigenApi\\motoApi.csproj",
       "projectName": "motoApi",
-      "projectPath": "C:\\Users\\Issam\\Documents\\school\\cloudapi\\ProjectCloudApi\\pokemon\\eigenApi\\motoApi\\motoApi.csproj",
+      "projectPath": "C:\\Users\\Issam\\Documents\\school\\cloudapi\\project\\pokemon\\EigenApi\\motoApi.csproj",
       "packagesPath": "C:\\Users\\Issam\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Issam\\Documents\\school\\cloudapi\\ProjectCloudApi\\pokemon\\eigenApi\\motoApi\\obj\\",
+      "outputPath": "C:\\Users\\Issam\\Documents\\school\\cloudapi\\project\\pokemon\\EigenApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

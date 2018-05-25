@@ -6,11 +6,12 @@ import { HttpClient } from '@angular/common/http';
 export class StoreService {
 
   private _url = 'http://localhost:5000/api/v1/'
-  motorString = 'motors';
-  helmetString = "helmets";
+  motorString = 'motors/';
+  helmetString = "helmets/";
 
   constructor( private _http: HttpClient) { }
 
+  
   GetMotors(): Observable<Motor[]>
   {
     return this._http.get<Motor[]>(this._url+this.motorString);
@@ -19,6 +20,11 @@ export class StoreService {
   GetHelmets(): Observable<Helmet[]>
   {
     return this._http.get<Helmet[]>(this._url+this.helmetString);
+  }
+
+  DeleteMotors(id) : Observable<Motor[]>
+  {
+    return this._http.delete<Motor[]>(this._url+this.motorString+id);
   }
 
 }

@@ -1,23 +1,30 @@
 
 
-    <!--Carousel Wrapper-->
+
+<div class="container">
+    <div class="card">
+
+        <button type="button" class="btn btn-danger waves-light" mdbWavesEffect (click)="ShowMotor()">buy a motorcycle!</button>
+
+        <button type="button" class="btn btn-danger waves-light" mdbWavesEffect (click)="ShowHelmet()">buy a helmet!</button>
+
     
-<mdb-carousel [isControls]="true" [animation]="'slide'">
-        <!--First slide-->
-        <mdb-slide>
-            
+
+    </div>
+</div>
+
+    <br>
+    <br>
+<div class="container" *ngIf="showMotor && showTable">  
+        
             <app-motor-catalogus></app-motor-catalogus>
-        
-        </mdb-slide>
-        <!--/First slide-->
-        <!--Second slide-->
-        <mdb-slide>
-                
+        </div>
+
+            <div class="container" *ngIf="!showMotor && showTable">
             <app-helmet-catalogus></app-helmet-catalogus>
-        
-        </mdb-slide>
-    </mdb-carousel>
-    <!--/.Carousel Wrapper-->
+        </div>
+
+    
 
     
 

@@ -7,9 +7,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StoreComponent implements OnInit {
 
+  showMotor: boolean;
+  showTable: boolean;
+  
   constructor() { }
 
   ngOnInit() {
+    
+  }
+
+  ShowMotor()
+  {
+    this.showMotor = true;
+    this.showTable=true;
+    
+    console.log(this.showMotor);
+  }
+
+  ShowHelmet()
+  {
+    this.showMotor = false;
+    this.showTable=true;
+   
+
   }
 
 }
