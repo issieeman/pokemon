@@ -18,7 +18,7 @@ public class MotorsController : Controller
     }
 
     [HttpGet]         // api/v1/motors
-    public List<Motor> GetAllMotors(string brand, string name, int? page, string sort, int length = 2, string dir = "asc")
+    public List<Motor> GetAllMotors(string brand, string name, int? page, string sort, int length = 5, string dir = "asc")
     {
         IQueryable<Motor> query = storeContext.Motors;
 

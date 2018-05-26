@@ -16,7 +16,7 @@
                 
                         <input mdbActive type="text" id="form1" class="form-control" (keyup)="onNameKeyUp($event)">
                         <label for="form1" class="">Enter Search:</label>
-                        <button type="button" class="btn btn-primary waves-light" (click)="SearchPokemon()" mdbRippleRadius>
+                        <button type="button" class="btn btn-deep-orange waves-light" (click)="SearchPokemon()" mdbRippleRadius>
                             <i class="fa fa-search" aria-hidden="true"></i> search pokemon</button>
                 
                         <br>
@@ -32,8 +32,8 @@
                     <tr *ngFor="let poke of pokemon.results" (click)="SetPokemon(poke.url)">
                         <td> <strong>{{poke.name}}</strong> </td>
                     </tr>
-                    <button type="button" class="btn btn-danger waves-light" (click)="GetPrev(pokemon.previous)" mdbRippleRadius>previous</button>
-                    <button type="button" class="btn btn-danger waves-light" (click)="GetNext(pokemon.next)" mdbRippleRadius>next</button>
+                    <button type="button" class="btn btn-deep-orange waves-light" (click)="GetPrev(pokemon.previous)" mdbRippleRadius>previous</button>
+                    <button type="button" class="btn btn-deep-orange waves-light" (click)="GetNext(pokemon.next)" mdbRippleRadius>next</button>
                     
                 </tbody>
             </table>

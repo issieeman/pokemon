@@ -31,11 +31,24 @@ const profile = `<!DOCTYPE html>
     <script src="main.js"></script>
 </head>
 <body>
-    <br/>
-    <br/>
-    Hallo {username}, 
-    <br/>
-    <img src="{photo}" style="max-height:200px;" alt="">
+<div class="card">
+<!--Card image-->
+
+        <img src="{photo}" width="20%" height="20%">
+
+
+    <!--Card content-->
+    <div class="card-body">
+        <!--Title-->
+        <h4 class="card-title">Hello, {username}</h4>
+        <!--Text-->
+        <p class="card-text">Welcome to the website made by Issam Moussaïd , a student of AP studying Electronics-ICT.</p>
+        <p>  This was website was  made for the course Cloud-Apis using the pokeApi rest api and a self written api of motorcycles and helmets </p>
+       
+    </div>
+
+</div>
+<!--/.Card-->
 </body>
 </html>`
 

@@ -1,30 +1,95 @@
 
-
-
         
         
-        <!--Card content-->
+            <!--Card content-->
 
-            <!--Title-->
-            <h4 class="card-title red">helmets</h4>
-            <!--Text-->
-            <div class="card"*ngIf="helmets">
+                <!--Title-->
+                <h4 class="card-title deep-orange lighten-1">Helmets</h4>
+                <!--Text-->
+                <div class="card"*ngIf="helmets">
 
-                    <table class="table table-hover primary-color-dark-text " >
-                      <thead>
-                          <tr>
-                              <th> <strong>brand</strong> </th>
-                              <th> <strong>name</strong> </th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                            <tr *ngFor="let helmet of helmets">
-                                    <td> <strong>{{helmet.brand}}</strong> </td>
-                                    <td> <strong>{{helmet.name}}</strong> </td>
-                                </tr>
-                          
-                      </tbody>
-                    </table>
+                        <table class="table table-hover primary-color-dark-text " >
+                          <thead>
+                              <tr>
+                                  <th> <strong>brand</strong> </th>
+                                  <th> <strong>name</strong> </th>
+                                  <th> <strong>type</strong> </th>
+                                  <th> <strong>color</strong> </th>
+                                  <th> <strong>price</strong> </th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              
+                              <tr *ngFor="let helmet of helmets">
+                                  
+                                  <td><i class="fa fa-shopping-basket" aria-hidden="true"></i> <strong>{{helmet.brand}}</strong> </td>
+                                  <td> <strong>{{helmet.name}}</strong> </td>
+                                  <td> <strong>{{helmet.type}}</strong> </td>
+                                  <td> <strong>{{helmet.color}}</strong> </td>
+                                  <td> <strong>{{helmet.price}}€</strong> 
+                                
+                                    <button type="button" class="close red" aria-label="Close"(click)="DeleteMotor(motor.id)" mdbTooltip="delete">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                
+                                </td>
 
-                </div>
-           
+                              </tr>
+                              
+                          </tbody>
+                        </table>
+
+                    </div>
+
+                    <br>
+                    <br>
+
+                    <div class="wrap">
+                    <div class="card">
+                            <h4 class="card-title deep-orange lighten-1">feel free to make adjustments to the Database by post/put</h4>
+
+                        <div class="md-form-sm">
+                                <i class="fa fa-motorcycle" aria-hidden="true"></i>
+                                <input id="id" class="form-control-sm" mdbActive >
+                                <label for="id">id</label>
+                            </div>
+
+                            <div class="md-form-sm">
+                                    <i class="fa fa-motorcycle" aria-hidden="true"></i>
+                                    <input id="brand" class="form-control-sm" mdbActive >
+                                    <label for="brand">Brand</label>
+                                </div>
+
+                                <div class="md-form-sm">
+                                        <i class="fa fa-motorcycle" aria-hidden="true"></i>
+                                        <input id="name" class="form-control-sm" mdbActive >
+                                        <label for="name">Name</label>
+                                    </div>
+
+                                    <div class="md-form-sm">
+                                            <i class="fa fa-motorcycle" aria-hidden="true"></i>
+                                            <input id="type" class="form-control-sm" mdbActive >
+                                            <label for="type">Type</label>
+                                        </div>
+
+                                        <div class="md-form-sm">
+                                                <i class="fa fa-motorcycle" aria-hidden="true"></i>
+                                                <input id="color" class="form-control-sm" mdbActive >
+                                                <label for="color">Color</label>
+                                            </div>
+
+                                            <div class="md-form-sm">
+                                                    <i class="fa fa-motorcycle" aria-hidden="true"></i>
+                                                    <input id="price" class="form-control-sm" mdbActive >
+                                                    <label for="price">price</label>
+                                                </div>
+
+                                                <br>
+                                                
+                                                <button type="button" class="btn btn-deep-orange waves-light" mdbWavesEffect>Post</button>
+                                                <button type="button" class="btn btn-deep-orange waves-light" mdbWavesEffect>Put</button>
+
+                        </div>
+                    </div>
+              
+    

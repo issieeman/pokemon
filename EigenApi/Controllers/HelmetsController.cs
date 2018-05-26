@@ -16,30 +16,71 @@ public class HelmetController : Controller
         this.storeContext = _ctx;
     }
 
+
+
+    [HttpGet]         // api/v1/helmets
+    public List<Helmet> GetAllHelmets(string brand, string name, int? page, string sort, int length = 5, string dir = "asc")
+    {
+        IQueryable<Helmet> query = storeContext.Helmets;
+
+        if (!string.IsNullOrWhiteSpace(brand))
+            query = query.Where(d => d.Brand == brand);
+        if (!string.IsNullOrWhiteSpace(name))
+            query = query.Where(d => d.Name == name);
+
+        if (!string.IsNullOrWhiteSpace(sort))
+        {
+            switch (sort)
+            {
+                case "name":
+                    if (dir == "asc")
+                        query = query.OrderBy(d => d.Name);
+                    else if (dir == "desc")
+                        query = query.OrderByDescending(d => d.Name);
+                    break;
+                case "cc":
+                    if (dir == "asc")
+                        query = query.OrderBy(d => d.Type);
+                    else if (dir == "desc")
+                        query = query.OrderByDescending(d => d.Type);
+                    break;
+            }
+        }
+
+        if (page.HasValue)
+            query = query.Skip(page.Value * length);
+        query = query.Take(length);
+
+        return query.ToList();
+    }
+
+
+
     [Route("{id}")]   // api/v1/helmets/2
     [HttpGet]
-    public Helmet GetHelmet(int id)
+    public IActionResult  GetHelmet(int id)
     {
         
         var helmet = storeContext.Helmets.Single(obj => obj.Id == id);
-        return helmet;
-    }
+        if(helmet == null)
+        return NotFound();
 
-    [HttpGet]         // api/v1/helmets
-    public List<Helmet> GetAllHelmets()
-    {
-        return storeContext.Helmets.ToList();
+        return Ok(helmet);
     }
 
     [Route("{id}")]
     [HttpDelete]
     public IActionResult DeleteHelmet(int id)
     {
-         var delete = storeContext.Helmets.Single(d => d.Id == id);
-        storeContext.Helmets.Remove(delete);
+         var helmet = storeContext.Helmets.Find(id);
+         if(helmet == null)
+            return NotFound();
+
+        //helmet verwijderen ..
+        storeContext.Helmets.Remove(helmet);
         storeContext.SaveChanges();
      
-        //helmet verwijderen ..
+        //Standaard response 204 bij een gelukte delete
         return NoContent();
     }
 
@@ -47,17 +88,18 @@ public class HelmetController : Controller
     public IActionResult CreateHelmet([FromBody] Helmet newHelmet)
     {
         //motor toevoegen in de databank, Id wordt dan ook toegekend
-        newHelmet.Id = 3;
-        // Stuur een result 201 terug met daarin het aangemaakte object  
+        storeContext.Helmets.Add(newHelmet);  
+        storeContext.SaveChanges();
+
+        // Stuur een result 201 terug met daarin het aangemaakte object
         return Created("", newHelmet);
-        // Alternatief met url naar action om deze resource op te halen
-        // return CreatedAtAction(nameof(GetBook), new { id = newBook.Id }, newBook);
+
     }
 
-   /* [HttpPut]
+    [HttpPut]
     public IActionResult UpdateHelmet([FromBody] Helmet updateHelmet)
     {
-        var orgHelmet = list.FirstOrDefault(d => d.Id == updateHelmet.Id);
+        var orgHelmet = storeContext.Helmets.Find(updateHelmet);
         if(orgHelmet == null)
             return NotFound();
 
@@ -67,8 +109,9 @@ public class HelmetController : Controller
         orgHelmet.Color = updateHelmet.Color;
         orgHelmet.Price = updateHelmet.Price;
         
+        storeContext.SaveChanges();
         return Ok(orgHelmet);
-    }*/
+    }
 }
 }
 

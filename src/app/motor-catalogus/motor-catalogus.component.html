@@ -1,86 +1,171 @@
+<!--Card content-->
 
-        
-        
-            <!--Card content-->
+<!--Title-->
+<h4 class="card-title deep-orange lighten-1">motors</h4>
+<!--Text-->
+<div class="card" *ngIf="motors">
 
-                <!--Title-->
-                <h4 class="card-title red">motors</h4>
-                <!--Text-->
-                <div class="card"*ngIf="motors">
+  <table class="table table-hover primary-color-dark-text ">
+    <thead>
+      <tr>
+        <th>
+          <strong>brand</strong>
+        </th>
+        <th>
+          <strong>name</strong>
+        </th>
+        <th>
+          <strong>cylinder size</strong>
+        </th>
+        <th>
+          <strong>Horse power</strong>
+        </th>
+        <th>
+          <strong>price</strong>
+        </th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
 
-                        <table class="table table-hover primary-color-dark-text " >
-                          <thead>
-                              <tr>
-                                  <th> <strong>brand</strong> </th>
-                                  <th> <strong>name</strong> </th>
-                                  <th> <strong>price</strong> </th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              
-                              <tr *ngFor="let motor of motors">
-                                  
-                                  <td><i class="fa fa-shopping-basket" aria-hidden="true"></i> <strong>{{motor.brand}}</strong> </td>
-                                  <td> <strong>{{motor.name}}</strong> </td>
-                                  <td> <strong>{{motor.price}}€</strong> </td>
-                                  <button type="button" class="close" aria-label="Close"(click)="DeleteMotor(motor.id)" mdbTooltip="delete">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                              </tr>
-                              
-                          </tbody>
-                        </table>
+      <tr *ngFor="let motor of motors">
 
-                    </div>
+        <td>
+          <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+          <strong>{{motor.brand}}</strong>
+        </td>
+        <td>
+          <strong>{{motor.name}}</strong>
+        </td>
+        <td>
+          <strong>{{motor.cilinderSize}} cc</strong>
+        </td>
+        <td>
+          <strong>{{motor.horsePower}} hp</strong>
+        </td>
+        <td>
+          <strong>{{motor.price}}€</strong>
+        </td>
+        <td>
+          <button>
+            <i class="fa fa-edit" aria-hidden="true" (click)="GetMotorToEdit(motor)" mdbTooltip="update"></i>
+          </button>
+        </td>
+        <td>
+          <button type="button" class="close red" aria-label="Close" (click)="DeleteMotor(motor.id)" mdbTooltip="delete">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </td>
+      </tr>
 
-                    <br>
-                    <br>
+    </tbody>
+  </table>
+  <div class="row">
+    <div class="col-1">
 
-                    <div class="wrap">
-                    <div class="card">
-                            <h4 class="card-title red">feel free to make adjustments to the Db by post/put</h4>
-
-                        <div class="md-form-sm">
-                                <i class="fa fa-motorcycle" aria-hidden="true"></i>
-                                <input id="id" class="form-control-sm" mdbActive >
-                                <label for="id">id</label>
-                            </div>
-
-                            <div class="md-form-sm">
-                                    <i class="fa fa-motorcycle" aria-hidden="true"></i>
-                                    <input id="brand" class="form-control-sm" mdbActive >
-                                    <label for="brand">Brand</label>
-                                </div>
-
-                                <div class="md-form-sm">
-                                        <i class="fa fa-motorcycle" aria-hidden="true"></i>
-                                        <input id="name" class="form-control-sm" mdbActive >
-                                        <label for="name">Name</label>
-                                    </div>
-
-                                    <div class="md-form-sm">
-                                            <i class="fa fa-motorcycle" aria-hidden="true"></i>
-                                            <input id="CC" class="form-control-sm" mdbActive >
-                                            <label for="CC">Cylinder Size</label>
-                                        </div>
-
-                                        <div class="md-form-sm">
-                                                <i class="fa fa-motorcycle" aria-hidden="true"></i>
-                                                <input id="HorsePower" class="form-control-sm" mdbActive >
-                                                <label for="HorsePower">Horse Power</label>
-                                            </div>
-
-                                            <div class="md-form-sm">
-                                                    <i class="fa fa-motorcycle" aria-hidden="true"></i>
-                                                    <input id="price" class="form-control-sm" mdbActive >
-                                                    <label for="price">price</label>
-                                                </div>
+      <button class=" deep-orange lighten-1" (click)="GetPrevious()">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="col"></div>
+    <div class="col-1">
+      <button class=" next deep-orange lighten-1 " (click)="GetNext()">
+        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
 
 
-                                                <button type="button" class="btn btn-success waves-light" mdbWavesEffect>Post</button>
-                                                <button type="button" class="btn btn-success waves-light" mdbWavesEffect>Put</button>
+</div>
 
-                        </div>
-                    </div>
-              
-    
+<br>
+<br>
+
+<div class="wrap">
+  <div class="card">
+    <h4 class="card-title deep-orange lighten-1">feel free to make adjustments to the Database by post/put</h4>
+
+    <div class="row">
+      <!-- POST -->
+      <div class="col">
+        <div class="md-form-sm">
+          <i class="fa fa-motorcycle" aria-hidden="true"></i>
+          <input id="brand" class="form-control-sm" [(ngModel)]="brand" mdbActive>
+          <label for="brand">Brand</label>
+        </div>
+
+        <div class="md-form-sm">
+          <i class="fa fa-motorcycle" aria-hidden="true"></i>
+          <input id="name" class="form-control-sm" [(ngModel)]="name" mdbActive>
+          <label for="name">Name</label>
+        </div>
+
+        <div class="md-form-sm">
+          <i class="fa fa-motorcycle" aria-hidden="true"></i>
+          <input id="CC" class="form-control-sm" [(ngModel)]="cc" mdbActive>
+          <label for="CC">Cylinder Size</label>
+        </div>
+
+        <div class="md-form-sm">
+          <i class="fa fa-motorcycle" aria-hidden="true"></i>
+          <input id="HorsePower" class="form-control-sm" [(ngModel)]="hp" mdbActive>
+          <label for="HorsePower">Horse Power</label>
+        </div>
+
+        <div class="md-form-sm">
+          <i class="fa fa-motorcycle" aria-hidden="true"></i>
+          <input id="price" class="form-control-sm" [(ngModel)]="price" mdbActive>
+          <label for="price">price</label>
+        </div>
+      </div>
+      <!--EINDE POST -->
+
+      <!-- PUT => Komt enkel bij klikken op update icoontje-->
+      <div class="col" *ngIf="this.motor">
+        <div class="md-form-sm">
+          <i class="fa fa-motorcycle" aria-hidden="true"></i>
+          <input id="brand" class="form-control-sm" [(ngModel)]="motor.brand" mdbActive>
+          <label for="brand">Brand</label>
+        </div>
+
+        <div class="md-form-sm">
+          <i class="fa fa-motorcycle" aria-hidden="true"></i>
+          <input id="name" class="form-control-sm" [(ngModel)]="motor.name" mdbActive>
+          <label for="name">Name</label>
+        </div>
+
+        <div class="md-form-sm">
+          <i class="fa fa-motorcycle" aria-hidden="true"></i>
+          <input id="CC" class="form-control-sm" [(ngModel)]="motor.cilinderSize" mdbActive>
+          <label for="CC">Cylinder Size</label>
+        </div>
+
+        <div class="md-form-sm">
+          <i class="fa fa-motorcycle" aria-hidden="true"></i>
+          <input id="HorsePower" class="form-control-sm" [(ngModel)]="motor.horsePower" mdbActive>
+          <label for="HorsePower">Horse Power</label>
+        </div>
+
+        <div class="md-form-sm">
+          <i class="fa fa-motorcycle" aria-hidden="true"></i>
+          <input id="price" class="form-control-sm" [(ngModel)]="motor.price" mdbActive>
+          <label for="price">price</label>
+        </div>
+      </div>
+      <!-- EINDE PUT-->
+    </div>
+    <br>
+    <div class="row">
+      <div class="col">
+        <button type="button" class="btn btn-deep-orange waves-light" (click)="CreateMotor()" mdbWavesEffect>Post</button>
+      </div>
+      <div class="col" *ngIf="this.motor">
+        <button type="button" class="btn btn-deep-orange waves-light" (click)="UpdateMotor()" mdbWavesEffect>Put</button>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>

@@ -26,6 +26,10 @@ namespace motoApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<StoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
+
+            //toevoegen voor acces control origin
+            services.AddCors();
+            //
             services.AddMvc();
         }
 
@@ -37,7 +41,11 @@ namespace motoApi
                 app.UseDeveloperExceptionPage();
             }
 
+            //toevoegen voor acces control origin
+            app.UseCors(builder => builder.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod());
+            //
             app.UseMvc();
+            
             DBInitializer.Initialize(_ctx);
         }
     }

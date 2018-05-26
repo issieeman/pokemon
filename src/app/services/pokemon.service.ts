@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import { HttpHeaders } from '@angular/common/http/src/headers';
+
 
 @Injectable()
 export class PokemonService {
@@ -15,9 +15,8 @@ export class PokemonService {
 
   
 
- // Detail: Pokemon;
+  private header = new HttpHeaders().set('Access-Control-Allow-Origin','*');
 
- // DetailItem : Item;
   constructor(private _http: HttpClient) { }
 
   /// volgende lijst

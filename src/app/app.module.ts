@@ -19,6 +19,7 @@ import { TypedetailviewComponent } from './typedetailview/typedetailview.compone
 import { MotorCatalogusComponent } from './motor-catalogus/motor-catalogus.component';
 import { StoreComponent } from './store/store.component';
 import { HelmetCatalogusComponent } from './helmet-catalogus/helmet-catalogus.component';
+import {FormsModule} from '@angular/forms';
 
 
 
@@ -34,10 +35,11 @@ import { HelmetCatalogusComponent } from './helmet-catalogus/helmet-catalogus.co
     TypedetailviewComponent,
     MotorCatalogusComponent,
     StoreComponent,
-    HelmetCatalogusComponent,
+    HelmetCatalogusComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     MDBBootstrapModule.forRoot(),
     RouterModule.forRoot([
       { path: 'pokedex', component: PokedexComponent },
